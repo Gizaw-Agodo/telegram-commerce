@@ -32,6 +32,20 @@ class ProductService {
 
     return result;
   }
+
+  async getProduct(shopId: string, productId: string): Promise<Product> {
+    await new Promise((resolve) => setTimeout(resolve, 400));
+
+    const product = products.find(
+      (p) => p.shopId === shopId && p.id === productId,
+    );
+
+    if (!product) {
+      throw new Error("Product not found");
+    }
+
+    return product;
+  }
 }
 
 export const productService = new ProductService();
