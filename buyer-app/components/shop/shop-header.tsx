@@ -1,4 +1,4 @@
-import { ShoppingCart } from "lucide-react";
+import { ShoppingCart, Star } from "lucide-react";
 import { Shop } from "@/features/shop/types/shop";
 
 interface ShopHeaderProps {
@@ -18,18 +18,19 @@ export function ShopHeader({ shop }: ShopHeaderProps) {
         <span
           className={`rounded-full px-3 py-1 font-medium ${
             shop.isOpen
-              ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
-              : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"
+              ? " text-green-700 dark:bg-green-900/30 dark:text-green-400"
+              : " text-red-700 dark:bg-red-900/30 dark:text-red-400"
           }`}
         >
           {shop.isOpen ? "● Open" : "● Closed"}
         </span>
 
-        <span className="rounded-full bg-muted px-3 py-1 font-medium text-muted-foreground">
-          ⭐ {shop.rating.toFixed(1)}
-        </span>
+        <div className="flex items-center gap-1">
+          <Star className="fill-yellow-400 text-yellow-400" size={16} />
+          {shop.rating.toFixed(1)}
+        </div>
 
-        <span className="rounded-full bg-muted px-3 py-1 font-medium text-muted-foreground">
+        <span className="rounded-full  px-3 py-1 font-medium text-muted-foreground">
           🚚 free delivery
         </span>
       </div>
